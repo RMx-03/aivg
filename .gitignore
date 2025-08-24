@@ -1,12 +1,12 @@
 # Dependencies
-/node_modules
+node_modules/
+frontend/node_modules/
+package-lock.json
+frontend/package-lock.json
 
-# Production
-/build
-
-# Miscellaneous
-.DS_Store
-*.pem
+# Production builds
+frontend/dist/
+.vercel/
 
 # Environment Variables
 .env
@@ -18,6 +18,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# OS
+.DS_Store
+*.pem
+
 # Editor directories and files
 .idea
 .vscode
@@ -27,6 +31,7 @@ yarn-error.log*
 *.sln
 *.sw?
 
-.vercel
-
-api/test.js
+# Development files
+server.js
+local-server.js
+test-*.js
