@@ -112,12 +112,15 @@ module.exports = async function handler(req, res) {
             videoFormData.append('motion_bucket_id', '127');
             videoFormData.append('seed', '0');
 
+            // Get headers from FormData
+            const formHeaders = videoFormData.getHeaders();
+            
             const videoResponse = await fetch('https://api.stability.ai/v2beta/image-to-video', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${process.env.STABILITY_API_KEY}`,
                     'Accept': 'video/*',
-                    ...videoFormData.getHeaders()
+                    ...formHeaders
                 },
                 body: videoFormData
             });

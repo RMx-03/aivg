@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "AI Video Generation API for Vercel",
   "dependencies": {
-    "form-data": "^4.0.0",
+    "form-data": "^4.0.4",
     "node-fetch": "^3.3.2"
   },
   "engines": {
