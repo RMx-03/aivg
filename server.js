@@ -13,6 +13,15 @@ app.use(express.json());
 // Serve static files from frontend dist
 app.use(express.static(path.join(__dirname, 'frontend/dist')));
 
+// Handle favicon requests explicitly
+app.get('/favicon.ico', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend/public/vite.svg'));
+});
+
+app.get('/vite.svg', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend/public/vite.svg'));
+});
+
 // Import the API functions and adapt them for Express
 async function generateVideo(req, res) {
     const { prompt } = req.body;
