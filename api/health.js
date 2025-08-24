@@ -1,8 +1,15 @@
-export default async function handler(req, res) {
-    // CORS headers
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+// CORS headers for Vercel
+const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+module.exports = async function handler(req, res) {
+    // Set CORS headers
+    Object.entries(corsHeaders).forEach(([key, value]) => {
+        res.setHeader(key, value);
+    });
 
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
@@ -18,4 +25,4 @@ export default async function handler(req, res) {
         apiKey: hasApiKey ? 'configured' : 'missing',
         environment: process.env.NODE_ENV || 'development'
     });
-}
+};

@@ -9,14 +9,22 @@
       }
     },
     {
-      "src": "api/*.js",
+      "src": "api/generate-video.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/health.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "src": "/api/generate-video",
+      "dest": "/api/generate-video"
+    },
+    {
+      "src": "/api/health",
+      "dest": "/api/health"
     },
     {
       "src": "/(.*)",
