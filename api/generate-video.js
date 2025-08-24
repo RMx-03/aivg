@@ -1,6 +1,4 @@
-// Import required modules
-import FormData from 'form-data';
-import fetch from 'node-fetch';
+const FormData = require('form-data');
 
 // CORS headers for Vercel
 const corsHeaders = {
@@ -9,7 +7,7 @@ const corsHeaders = {
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 };
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
     // Handle CORS preflight
     if (req.method === 'OPTIONS') {
         res.status(200);
@@ -46,6 +44,9 @@ export default async function handler(req, res) {
 
     try {
         console.log(`Attempting to generate content with Stability AI for prompt: "${prompt}"`);
+        
+        // Dynamically import node-fetch for CommonJS compatibility
+        const fetch = (await import('node-fetch')).default;
         
         // Step 1: Generate image from text prompt using SDXL
         console.log('Step 1: Generating image from text prompt...');
@@ -156,4 +157,4 @@ export default async function handler(req, res) {
             stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
         });
     }
-}
+};

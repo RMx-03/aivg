@@ -7,35 +7,6 @@
       "config": {
         "distDir": "dist"
       }
-    },
-    {
-      "src": "api/*.js",
-      "use": "@vercel/node",
-      "config": {
-        "maxDuration": 30
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/favicon.ico",
-      "dest": "/frontend/public/vite.svg"
-    },
-    {
-      "src": "/vite.svg",
-      "dest": "/frontend/public/vite.svg"
-    },
-    {
-      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|eot))",
-      "dest": "/frontend/dist/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/dist/index.html"
     }
   ]
 }
