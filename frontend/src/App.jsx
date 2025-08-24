@@ -16,14 +16,10 @@ function App() {
         try {
             console.log('Making request to backend...');
             
-            // Use port 3002 for local Express server
-            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-            const apiUrl = isLocal && window.location.port === '3002' 
-                ? '/api/generate-video'  // Local Express server
-                : '/api/generate-video';  // Vercel or production
+            // Use relative URLs - works for both local Express and Vercel deployment
+            const apiUrl = '/api/generate-video';
             
             console.log('API URL:', apiUrl);
-            console.log('Environment:', 'Local Express Server');
             console.log('Current URL:', window.location.href);
             
             // First, test if API is reachable with health check

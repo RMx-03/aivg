@@ -4,10 +4,11 @@
   "description": "AI Video Generation API for Vercel",
   "main": "server.js",
   "scripts": {
-    "build": "cd frontend && npm run build",
+    "build": "cd frontend && npm install && npm run build",
     "dev": "vercel dev",
     "start": "node server.js",
-    "local": "node server.js"
+    "local": "node server.js",
+    "vercel-build": "cd frontend && npm install && npm run build"
   },
   "dependencies": {
     "form-data": "^4.0.0",
